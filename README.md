@@ -32,3 +32,5 @@ describe how you did it in the documentation.
 
 > While the software does not have to be “bug free", I should not encounter bugs while
 performing the documented operations, or variations thereof. 
+# Cloning The Project
+    On vscode, click on clone repository on the main explorer page and input the repository URL into the pop-up box.
