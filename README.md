@@ -33,4 +33,14 @@ describe how you did it in the documentation.
 > While the software does not have to be “bug free", I should not encounter bugs while
 performing the documented operations, or variations thereof. 
 # Cloning The Project
-    On vscode, click on clone repository on the main explorer page and input the repository URL into the pop-up box.
+    On vscode, click on clone repository on the main explorer page 
+    and input the repository URL into the pop-up box.
+# Working on Virtual Environment with Flask
+    - Need to install pip 
+    - Upgrade pip by $ py -m pip install --upgrade pip
+    - $ python3 -m venv venv (For VSC, you need to click yes for Python extension pop-up)
+    - $ source venv/bin/activate
+# Set-Up the program
+    - $ pip install -r requirements.txt  //install all packages needed
+# Run the Program 
+    - $ flask run
