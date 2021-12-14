@@ -1,7 +1,7 @@
 # 336 Project 2
 
 # Temporary Notes : 
-Data set: https://www.kaggle.com/thomaskonstantin/top-270-rated-computer-science-programing-books
+Data set: https://www.kaggle.com/leonardopena/top50spotify2019
 - Will be using SQLite and SQLAlchemy
 - Users should be able to create an account and add books to their shelfs.
 - Must be able to remove books and Close Account
