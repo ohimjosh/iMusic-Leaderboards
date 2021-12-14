@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 {% block content %}
 <!DOCTYPE html>
@@ -10,8 +9,8 @@
     <h1>Register</h1>
 </head>
 <body>
-    <form action="" method="post"></form>
-    {{ form.hidden_tag() }}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
     <p>
         {{ form.username.label }}<br>
         {{ form.username(size=32) }}<br>
@@ -41,6 +40,9 @@
         {% endfor %}
     </p>
     <p>{{ form.submit() }}</p>
+
+    </form>
+    
     
 </body>
 </html>
