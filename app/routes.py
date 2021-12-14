@@ -49,6 +49,17 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+@app.route('/terminate')
+def terminate():
+    if current_user.is_authenticated:
+        user = User.query.filter_by(username=current_user.username).first()
+        db.session.delete(user)
+        db.session.commit()
+        flash('Account terminated.')
+        return redirect(url_for('login'))
+    
+    
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
