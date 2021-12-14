@@ -2,11 +2,11 @@
 
 # Temporary Notes : 
 Data set: https://www.kaggle.com/thomaskonstantin/top-270-rated-computer-science-programing-books
-Will be using SQLite and SQLAlchemy
-Users should be able to create an account and add books to their shelfs.
-Must be able to remove books and Close Account
-Must be able to Update their information
-Must be able to rate their books (1 - 5 stars) 
+- Will be using SQLite and SQLAlchemy
+- Users should be able to create an account and add books to their shelfs.
+- Must be able to remove books and Close Account
+- Must be able to Update their information
+- Must be able to rate their books (1 - 5 stars) 
 
 # Todo:
 - Login, Registration, Connect to DB
