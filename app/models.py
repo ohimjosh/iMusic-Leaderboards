@@ -76,6 +76,12 @@ class Song(db.Model):
     popularity = db.Column(db.Integer, unique=True)
 
 
+    def __repr__(self):
+        return '<Song: ID {}, track {}, artist {}, genre {}, bpm {}, popularity {}>'.format(self.id, self.track_name, self.artist_name, self.genre,
+                self.beats_per_minute, self.popularity)
+
+
+
 
 
 

@@ -5,13 +5,47 @@ from app import app, db
 from flask import render_template, flash, redirect, request
 from app.forms import LoginForm, RegistrationForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Song
 from werkzeug.urls import url_parse
+import csv
+
+
+
+# CSV Reading
+def readData():
+    song_data = {}
+    file_addresss = '/home/damien/python/336_project/app/static/top50spotifySongs.csv'
+    with open(file_addresss, 'r', errors='ignore') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            # print(row)
+            song_data[row[0]] = {'TrackName' : row[1],
+                                 'Artist' : row[2],
+                                 'Genre' : row[3],
+                                 'BeatsPerMinute' : row[4],
+                                 'Popularity': row[len(row) - 1]}
+    song_data.pop('')
+    # print(song_data)
+    return song_data
+
+
+
 
 @app.route('/')
 @app.route('/index')
-@login_required
 def index():
+    data = readData()
+    for key, value in data.items():
+        s = Song(id=key,
+                 track_name=value['TrackName'],
+                 artist_name=value['Artist'],
+                 genre=value['Genre'],
+                 beats_per_minute=value['BeatsPerMinute'],
+                 popularity=value['Popularity'])
+        print(s)
+
+
+
     user = {'username': 'Josh'}
     posts = [
         {
