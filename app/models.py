@@ -32,3 +32,34 @@ class Post(db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+
+
+
+class Song(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    track_name = db.Column(db.String(128), unique=True)
+    artist_name = db.Column(db.String(64))
+    genre = db.Column(db.String(64))
+    beats_per_minute = db.Column(db.Integer)
+    popularity = db.Column(db.Integer, unique=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
