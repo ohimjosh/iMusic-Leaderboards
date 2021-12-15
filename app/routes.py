@@ -4,11 +4,8 @@ from flask.helpers import url_for
 from flask_wtf import form
 from app import app, db
 from flask import render_template, flash, redirect, request
-<<<<<<< Updated upstream
 from app.forms import LoginForm, RegistrationForm, EmptyForm, EditProfileForm
-=======
 from app.forms import LoginForm, RegistrationForm
->>>>>>> Stashed changes
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Song
 from werkzeug.urls import url_parse
@@ -57,7 +54,7 @@ def readData():
 @app.route('/')
 @app.route('/index')
 def index():
-    readData()
+#    readData()
     user = {'username': 'Josh'}
     posts = [
         {
@@ -125,7 +122,6 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-<<<<<<< Updated upstream
 @app.route('/unfollow/<username>', methods=['POST'])
 @login_required
 def unfollow(username):
@@ -177,7 +173,6 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-=======
 
 
 
@@ -222,4 +217,3 @@ def before_request():
 
 
 
->>>>>>> Stashed changes
