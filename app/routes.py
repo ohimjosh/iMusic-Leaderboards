@@ -4,18 +4,24 @@ from flask.helpers import url_for
 from flask_wtf import form
 from app import app, db
 from flask import render_template, flash, redirect, request
+<<<<<<< Updated upstream
 from app.forms import LoginForm, RegistrationForm, EmptyForm, EditProfileForm
+=======
+from app.forms import LoginForm, RegistrationForm
+>>>>>>> Stashed changes
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Song
 from werkzeug.urls import url_parse
 import csv
+import os
 
 
 
 # CSV Reading
 def readData():
     song_data = {}
-    file_addresss = '/home/damien/python/336_project/app/static/top50spotifySongs.csv'
+    path = os.path.abspath(os.path.dirname('top50spotifySongs.csv'))
+    file_addresss = os.path.join(path, 'app/top50spotifySongs.csv')
     with open(file_addresss, 'r', errors='ignore') as f:
         reader = csv.reader(f)
         for row in reader:
@@ -26,8 +32,24 @@ def readData():
                                  'BeatsPerMinute' : row[4],
                                  'Popularity': row[len(row) - 1]}
     song_data.pop('')
-    # print(song_data)
-    return song_data
+    data = song_data
+
+    for key, value in data.items():
+        s = Song.query.filter_by(id=value.get('id')).first()
+        if s is None:
+            #print(value['Popularity'])
+            s = Song(id=key,
+                     track_name=value['TrackName'],
+                     artist_name=value['Artist'],
+                     genre=value['Genre'],
+                     beats_per_minute=value['BeatsPerMinute'],
+                     popularity=value['Popularity'])
+            print(s)
+            db.session.add(s)
+            db.session.commit()
+        else:
+            print("Already in db")
+    
 
 
 
@@ -35,18 +57,7 @@ def readData():
 @app.route('/')
 @app.route('/index')
 def index():
-    data = readData()
-    for key, value in data.items():
-        s = Song(id=key,
-                 track_name=value['TrackName'],
-                 artist_name=value['Artist'],
-                 genre=value['Genre'],
-                 beats_per_minute=value['BeatsPerMinute'],
-                 popularity=value['Popularity'])
-        print(s)
-
-
-
+    readData()
     user = {'username': 'Josh'}
     posts = [
         {
@@ -113,25 +124,8 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/follow/<username>', methods=['POST'])
-@login_required
-def follow(username):
-    form = EmptyForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=username).first()
-        if user is None:
-            flash('User {} not found.'.format(username))
-            return redirect(url_for('index'))
-        if user == current_user:
-            flash('You cannot follow yourself!')
-            return redirect(url_for('user', username=username))
-        current_user.follow(user)
-        db.session.commit()
-        flash('You are following {}!'.format(username))
-        return redirect(url_for('user', username=username))
-    else:
-        return redirect(url_for('index'))
 
+<<<<<<< Updated upstream
 @app.route('/unfollow/<username>', methods=['POST'])
 @login_required
 def unfollow(username):
@@ -183,3 +177,49 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes

@@ -4,11 +4,6 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from hashlib import md5
 
-followers = db.Table('followers',
-    db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
-)
-
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -26,6 +21,7 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+<<<<<<< Updated upstream
     
     followed = db.relationship(
         'User', secondary=followers,
@@ -58,6 +54,9 @@ class User(UserMixin, db.Model):
             digest, size)
         
         
+=======
+
+>>>>>>> Stashed changes
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
@@ -77,16 +76,16 @@ def load_user(id):
 
 class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    track_name = db.Column(db.String(128), unique=True)
+    track_name = db.Column(db.String(128))
     artist_name = db.Column(db.String(64))
     genre = db.Column(db.String(64))
     beats_per_minute = db.Column(db.Integer)
-    popularity = db.Column(db.Integer, unique=True)
+    popularity = db.Column(db.Integer)
 
 
     def __repr__(self):
-        return '<Song: ID {}, track {}, artist {}, genre {}, bpm {}, popularity {}>'.format(self.id, self.track_name, self.artist_name, self.genre,
-                self.beats_per_minute, self.popularity)
+        return '<Song: ID {}, track {}, artist {}, genre {}, bpm {}>'.format(self.id, self.track_name, self.artist_name, self.genre,
+                self.beats_per_minute)
 
 
 
