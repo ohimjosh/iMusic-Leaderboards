@@ -22,11 +22,18 @@ def readData():
     with open(file_addresss, 'r', errors='ignore') as f:
         reader = csv.reader(f)
         for row in reader:
-            # print(row)
             song_data[row[0]] = {'TrackName' : row[1],
                                  'Artist' : row[2],
                                  'Genre' : row[3],
-                                 'BeatsPerMinute' : row[4]}
+                                 'BeatsPerMinute' : row[4],
+                                 'Energy' : row[5],
+                                 'Danceability' : row[6],
+                                 'Loudness_dB' : row[7],
+                                 'Liveness' : row[8],
+                                 'Valence' : row[9],
+                                 'Length' : row[10],
+                                 'Acousticness' : row[11],
+                                 'Speechiness' : row[12]}
                                  #'Popularity': row[len(row) - 1]}
     song_data.pop('')
     data = song_data
@@ -35,13 +42,11 @@ def readData():
         s = Song.query.filter_by(id=key).first()
         print(s)
         if s is None:
-            #print(value['Popularity'])
             s = Song(id=key,
                      track_name=value['TrackName'],
                      artist_name=value['Artist'],
                      genre=value['Genre'],
                      beats_per_minute=value['BeatsPerMinute'])
-                     #popularity=value['Popularity'])
             print(s)
             db.session.add(s)
             db.session.commit()

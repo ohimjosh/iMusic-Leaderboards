@@ -82,6 +82,7 @@ class Song(db.Model):
     artist_name = db.Column(db.String(64))
     genre = db.Column(db.String(64))
     beats_per_minute = db.Column(db.Integer)
+    song_data = db.relationship('SongData', backref='song')
 
 
     def __repr__(self):
@@ -90,19 +91,14 @@ class Song(db.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+class SongData(db.Model):
+    id  = db.Column(db.Integer, primary_key=True)
+    song_id = db.Column(db.Integer, db.ForeignKey('song.id'))
+    danceability = db.Column(db.Integer)
+    loundness_dB = db.Column(db.Integer)
+    valence = db.Column(db.Integer)
+    acousticness = db.Column(db.Integer)
+    speechiness = db.Column(db.Integer)
 
 
 
