@@ -92,15 +92,21 @@ class Song(db.Model):
 
 
 class SongData(db.Model):
-    id  = db.Column(db.Integer, primary_key=True)
-    song_id = db.Column(db.Integer, db.ForeignKey('song.id'))
+    song_id = db.Column(db.Integer, db.ForeignKey('song.id'), primary_key=True)
     danceability = db.Column(db.Integer)
-    loundness_dB = db.Column(db.Integer)
+    loudness_dB = db.Column(db.Integer)
     valence = db.Column(db.Integer)
     acousticness = db.Column(db.Integer)
     speechiness = db.Column(db.Integer)
 
 
+    def __repr__(self):
+        return '<Song Data: {}, {}, {}, {}, {}, {}>'.format(self.song_id,
+                                                            self.danceability,
+                                                            self.loudness_dB,
+                                                            self.valence,
+                                                            self.acousticness,
+                                                            self.speechiness)
 
 
 

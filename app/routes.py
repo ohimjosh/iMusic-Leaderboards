@@ -7,7 +7,7 @@ from flask import render_template, flash, redirect, request
 from app.forms import LoginForm, RegistrationForm, EmptyForm, EditProfileForm
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Song
+from app.models import User, Song, SongData
 from werkzeug.urls import url_parse
 import csv
 import os
@@ -47,8 +47,18 @@ def readData():
                      artist_name=value['Artist'],
                      genre=value['Genre'],
                      beats_per_minute=value['BeatsPerMinute'])
-            print(s)
+
+            s_data = SongData(song_id=s.id,
+                              danceability=value['Danceability'],
+                              loudness_dB=value['Loudness_dB'],
+                              valence=value['Valence'],
+                              acousticness=value['Acousticness'],
+                              speechiness=value['Speechiness'])
+
+
+            print(s_data)
             db.session.add(s)
+            db.session.add(s_data)
             db.session.commit()
         else:
             print("Already in db")
