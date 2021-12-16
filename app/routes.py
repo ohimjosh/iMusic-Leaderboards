@@ -47,8 +47,6 @@ def readData():
             db.session.commit()
         else:
             print("Already in db")
-            return 1
-    return 0
     
 
 
