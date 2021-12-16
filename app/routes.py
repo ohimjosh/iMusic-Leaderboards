@@ -26,26 +26,29 @@ def readData():
             song_data[row[0]] = {'TrackName' : row[1],
                                  'Artist' : row[2],
                                  'Genre' : row[3],
-                                 'BeatsPerMinute' : row[4],
-                                 'Popularity': row[len(row) - 1]}
+                                 'BeatsPerMinute' : row[4]}
+                                 #'Popularity': row[len(row) - 1]}
     song_data.pop('')
     data = song_data
 
     for key, value in data.items():
-        s = Song.query.filter_by(id=value.get('id')).first()
+        s = Song.query.filter_by(id=key).first()
+        print(s)
         if s is None:
             #print(value['Popularity'])
             s = Song(id=key,
                      track_name=value['TrackName'],
                      artist_name=value['Artist'],
                      genre=value['Genre'],
-                     beats_per_minute=value['BeatsPerMinute'],
-                     popularity=value['Popularity'])
+                     beats_per_minute=value['BeatsPerMinute'])
+                     #popularity=value['Popularity'])
             print(s)
             db.session.add(s)
             db.session.commit()
         else:
             print("Already in db")
+            return 1
+    return 0
     
 
 
@@ -54,7 +57,7 @@ def readData():
 @app.route('/')
 @app.route('/index')
 def index():
-#    readData()
+    r = readData()
     user = {'username': 'Josh'}
     posts = [
         {

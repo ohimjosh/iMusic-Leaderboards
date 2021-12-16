@@ -82,7 +82,6 @@ class Song(db.Model):
     artist_name = db.Column(db.String(64))
     genre = db.Column(db.String(64))
     beats_per_minute = db.Column(db.Integer)
-    popularity = db.Column(db.Integer)
 
 
     def __repr__(self):
