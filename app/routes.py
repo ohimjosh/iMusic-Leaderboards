@@ -3,7 +3,7 @@ from sys import audit
 from flask.helpers import url_for
 from flask_wtf import form
 from app import app, db
-from flask import render_template, flash, redirect, request
+from flask import render_template, flash, redirect, request, url_for
 from app.forms import LoginForm, RegistrationForm, EmptyForm, EditProfileForm
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -198,42 +198,10 @@ def leaderboard():
     return render_template('leaderboard.html', all_songs=all_songs)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@app.route('/leaderboard/<int:songID>')
+def song_page(songID):
+    song = Song.query.filter_by(id=songID).first_or_404()
+    return render_template('song_page.html', song=song)
 
 
 

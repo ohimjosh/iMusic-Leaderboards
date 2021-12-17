@@ -2,8 +2,8 @@
 {% block content %}
 <body>
     {% for song in all_songs %}
-        <p>Rank  : {{ song.id }} Track Name : {{ song.track_name }}</p>
-
+    <p>Rank  : {{ song.id }}</p>
+    <p><a href="{{url_for('song_page', songID=song.id) }}">{{ song.track_name }}</a></p>
     {% endfor %}
 
 </body>
