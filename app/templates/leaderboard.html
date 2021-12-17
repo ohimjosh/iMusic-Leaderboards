@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    {% for song in all_songs %}
+        <p>Rank  : {{ song.id }} Track Name : {{ song.track_name }}</p>
+
+    {% endfor %}
+
+</body>
+</html>
+{% endblock %}

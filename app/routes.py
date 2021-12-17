@@ -80,11 +80,12 @@ def index():
         {
             'author': {'username': 'Susan'},
             'body' : 'The Avengers movie was so cool!'
-            
         }
     ]
-    
     return render_template ('index.html', title = 'Home', user=user, posts=posts)
+
+
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -191,6 +192,10 @@ def before_request():
         db.session.commit()
 
 
+@app.route('/leaderboard')
+def leaderboard():
+    all_songs = Song.query.order_by(Song.id.asc()).all()
+    return render_template('leaderboard.html', all_songs=all_songs)
 
 
 
