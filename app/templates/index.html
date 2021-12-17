@@ -13,9 +13,28 @@
     {% endif %}
 </head>
 <body>
-    <h1>Hi, {{ current_user.username }}!</h1>
-    <p>Terminate Account? <a href="{{ url_for('terminate') }}">Click to Terminate!</a></p>
-    <p><a href="{{url_for('leaderboard') }}">Leaderboard</a></p>
+    <div class="main">
+        <div class="main-container">
+            <div class="main-content">
+                <h1>iMusic Leaderboards.</h1>
+                    <p>The place to find the top songs played on the radio.</p>
+                    
+                    {% if current_user.is_anonymous %}
+                    <button class="main-btn">
+                        <a href="{{url_for('login') }}">leaderboard</a>
+                    </button>
+                    {% elif current_user.is_authenticated %}
+                    <button class="main-btn">
+                        <a href="{{url_for('leaderboard') }}">leaderboard</a>
+                    </button>
+                    {% endif %}
+
+            </div>
+            <div class="main-img-container">
+                <img src="static/img/photo.svg" alt="" id="main-img">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 {% endblock %}

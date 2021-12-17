@@ -6,11 +6,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h1>Manual/Tutorial</h1>>
 </head>
+
 <body>
-    <h1>Hi, {{ current_user.username }}!</h1>
-    <p>Welcome to the tutorial where you will learn about the software's use and features.</p>
+    <style>
+        img {
+          width: 650px;
+          border: 2px solid #000000;
+        }
+    </style>
+    <div class="tutorial">
+        <div class="tutorial-container">
+            <div class="tutorial-content">
+                <h1>Hi, {{ current_user.username }}!</h1>
+                <h2>Welcome to the tutorial.</h2>
+                <p>Learn about the software's use and features.</p>
+            </div>
+            <div class="tutorial-image-one">
+                <img src="static/img/one.png" alt="">
+            </div>
+            <div class="tutorial-image-two">
+                <h2>Leaderboard button.</h2>
+                <p>Users can press this button to view leaderboards.</p>
+                <p>Those not logged in will be redirected to login page.</p>
+                <img src="static/img/two.png" alt="">
+            </div>
+            <div class="tutorial-image-three">
+                <h2>Nav bar.</h2>
+                <p>iMusic and Home redirects you to the home page.</p>
+                <p>Tutorial is this page that you are on right now.</p>
+                <img src="static/img/three.png" alt="">
+            </div>
+            <div class="tutorial-image-four">
+                <h2>Nav bar PT2.</h2>
+                <p>Profile redirects you to basic info on user.</p>
+                <p>Users can log in or out</p>
+                <img src="static/img/four.png" alt="">
+            </div>
+            <div class="tutorial-image-five">
+                <h2>Profile.</h2>
+                <p>Available options include editing profile and terminating account.</p>
+                <img src="static/img/five.png" alt="">
+            </div>
+            <div class="tutorial-image-six">
+                <h2>Leaderboard.</h2>
+                <p>List of top songs played, song title can be click and redirected to info page.</p>
+                <img src="static/img/six.png" alt="">
+            </div>
+            <div class="tutorial-image-seven">
+                <h2>Song page.</h2>
+                <p>Basic info of song are shown. Able to follow song and see followers.</p>
+                <img src="static/img/seven.png" alt="">
+            </div>
+
+
+        </div>
+    </div>
+
 </body>
 </html>
 {% endblock %}

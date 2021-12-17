@@ -9,9 +9,10 @@
 
         <div class="song-contents">
             <ul> Rank: {{ song.id }} </ul>
-            <ul> {{ song.track_name }} </ul>
-            <ul> {{ song.artist_name }} </ul>
-            <ul> {{ song }} </ul>
+            <ul> Song: {{ song.track_name }} </ul>
+            <ul> Artist: {{ song.artist_name }} </ul>
+            <ul> Followers: {{ song.listeners.all() }} </ul>
+
             <div class="follow-content">
                 {% if not current_user.is_anonymous %}
                     {% if current_user.is_following_song(song) %}
@@ -22,6 +23,8 @@
                 {% endif %}
             </div>
         </div>
+
+        
     </div>
 
 </body>

@@ -1,12 +1,4 @@
-.song-container {
-    padding: 2rem;
-}
 
-
-.song-contents {
-    margin: -130px 50px 10px 100px;
-    
-}
 
 .follow-content {
     margin: 0px 0px 00px 40px;
@@ -15,4 +7,302 @@
 
 .container-leaderboard {
     padding: 3rem;
+}
+
+.table-container {
+    padding: 20px;
+
+}
+
+.main {
+    background-color: #31373d;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-self: center;
+    width: 80%;
+    margin: 0 auto;
+    height: 90vh;
+    background-color: #31373d;
+}
+
+.main-content {
+    justify-self: start;
+    margin-left: 20px;
+    color: white;
+    width: 80%;
+}
+
+.main-content h1 {
+    font-size: 2rem;
+}
+
+.main-content p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.main-btn {
+    font-size: 1rem;
+    background-color: red;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all .35s;
+    outline: none;
+}
+
+.main-btn a {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-decoration: none;
+}
+
+.main-btn::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    transition: all .35s;
+    border-radius: 4px;
+    background: rgb(0, 132, 255);
+}
+
+.main-btn:hover {
+    color: white;
+}
+
+.main-btn:hover::after {
+    width: 100%;
+}
+
+#main-img {
+    height: 80%;
+    width: 80%;
+}
+
+.main-img-container {
+    text-align: center;
+
+}
+
+/* index responsive */
+@media screen and (max-width:768px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 90%;
+        margin: 0 auto;
+        height: 90vh;
+        background-color: #31373d;
+    }
+
+    .main-content {
+        justify-self: center;
+        color: white;
+        width: 80%;
+        margin: 0;
+    }
+
+    .main-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-content p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+
+    #main-img {
+        display: none;
+    }
+
+    
+    
+}
+
+@media screen and (max-width: 480px) {
+    .main-content {
+        text-align: center;
+    }
+
+    .main-content h1 {
+        font-size: 2.8rem;
+
+    }
+
+    .main-content p {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .main-btn {
+        padding: 12px 36px;
+        margin-top: 2.5 rem;
+    }
+    
+}
+
+.footer-container {
+    background-color: #31373d;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-logo {
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.footer-links {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-link-wrapper {
+    display: flex;
+}
+
+.footer-link-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 16px;
+    text-align: left;
+    width: 190px;
+    box-sizing: border-box;
+}
+
+.footer-link-items h2 {
+    margin-bottom: 16px;
+    font-size: 23px;
+}
+
+.footer-link-items > h2 {
+    color: #999c99;;
+
+}
+
+.footer-link-items a {
+    color: #999c99;;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.footer-link-items a:hover {
+    color: #cccdcf;
+    transition: 0.3s ease-out;
+}
+
+/* Socials */
+.social-icon-link {
+    text-decoration: none;
+    color: #999c99;;
+    font-size: 24px;
+}
+
+.social-media {
+    text-decoration: none;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.social-media-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    align-items: center;
+    width: 240px;
+}
+
+.social-icons-link {
+    color: #999c99;;
+    justify-self: flex-start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+
+.social-icons i:hover {
+    color: #cccdcf;
+    text-decoration: none;
+    transition: 0.3s ease-out;
+}
+
+
+.website-right {
+    color: white;
+}
+
+.user {
+    padding: 3rem;
+}
+
+.login {
+    padding: 3rem;
+}
+
+.tutorial {
+    padding: 3rem;
+}
+
+.tutorial-container img{
+    margin-bottom: 3rem;
+}
+
+.user-content img{
+    width: 200px;
+    border: 5px solid black;
+}
+
+.top td {
+    margin: 15px 0 0 0 ;
+    
+}
+
+
+.song-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+
+.song-contents {
+    margin: 50px 10px 100px;
+    
 }
