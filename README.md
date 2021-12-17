@@ -3,10 +3,9 @@
 # Overview 
 Data set: https://www.kaggle.com/leonardopena/top50spotify2019
 - Will be using SQLite and SQLAlchemy
-- Users should be able to create an account and add books to their shelfs.
-- Must be able to remove books and Close Account
+- Users should be able to create an account and add music to their follow list.
+- Must be able to remove music they are following and Close Account
 - Must be able to Update their information
-- Must be able to rate their books (1 - 5 stars) 
 
 # Specification/Requirement
 
