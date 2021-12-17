@@ -57,6 +57,11 @@ performing the documented operations, or variations thereof.
 # Cloning The Project
     On vscode, click on clone repository on the main explorer page 
     and input the repository URL into the pop-up box.
+# Installing SQLite
+    - Go to SQLite download page, and download precompiled binaries from Windows(or whatever your OS is) section.
+    - Download bundled zipped files.
+    - Create a folder C:\>sqlite and unzip above two zipped files in this folder, which will give you sqlite3.def, sqlite3.dll and sqlite3.exe files.
+    - Add C:\>sqlite in your PATH environment variable and finally go to the command prompt and issue sqlite3 command, which should display your sqlite version
 # Working on Virtual Environment with Flask
     - Need to install pip 
     - Upgrade pip by $ py -m pip install --upgrade pip
