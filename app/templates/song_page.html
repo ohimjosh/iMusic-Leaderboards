@@ -1,19 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 <body>
-    <p> {{ song.id }} </p>
-    <p> {{ song }} </p>
-    <p> {{ song.track_name }} </p>
-    <p> {{ song.valence }} </p>
+    <div class="song-container">
 
-    {% if not current_user.is_anonymous %}
-        {% if current_user.is_following_song(song) %}
-        <a href="{{url_for('song_follow', songID=song.id, action='unfollow')}}">Unfollow</a>
-        {% else %}
-        <a href="{{url_for('song_follow', songID=song.id, action='follow')}}">Follow</a>
-        {% endif %}
-    {% endif %}
+        <div class="song-icon">
+            <i class="fas fa-music fa-8x"></i>
+        </div>
 
+        <div class="song-contents">
+            <ul> Rank: {{ song.id }} </ul>
+            <ul> {{ song.track_name }} </ul>
+            <ul> {{ song.artist_name }} </ul>
+            <ul> {{ song }} </ul>
+            <div class="follow-content">
+                {% if not current_user.is_anonymous %}
+                    {% if current_user.is_following_song(song) %}
+                    <a href="{{url_for('song_follow', songID=song.id, action='unfollow')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Unfollow</a>
+                    {% else %}
+                    <a href="{{url_for('song_follow', songID=song.id, action='follow')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Follow</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

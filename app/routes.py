@@ -12,8 +12,6 @@ from werkzeug.urls import url_parse
 import csv
 import os
 
-
-
 # CSV Reading
 def readData():
     song_data = {}
@@ -72,20 +70,7 @@ def readData():
 def index():
     r = readData()
     user = {'username': 'Josh'}
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body' : 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body' : 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template ('index.html', title = 'Home', user=user, posts=posts)
-
-
-
+    return render_template ('index.html', title = 'Home', user=user)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -121,6 +106,11 @@ def terminate():
         db.session.commit()
         flash('Account terminated.')
         return redirect(url_for('login'))
+    next_page = request.args.get('next')
+    if not next_page or url_parse(next_page).netloc != '':
+        next_page = url_for('index')
+        flash('Account not signed in.')
+    return redirect(next_page)
     
     
 
@@ -178,12 +168,8 @@ def edit_profile():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
     form = EmptyForm()
-    return render_template('user.html', user=user, posts=posts, form=form)
+    return render_template('user.html', user=user, form=form)
 
 @app.before_request
 def before_request():
@@ -217,6 +203,11 @@ def song_follow(songID, action):
         flash('You unfollowed {}'.format(song.track_name))
         db.session.commit()
     return redirect(request.referrer)
+
+@app.route("/tutorial")
+@login_required
+def tutorial():
+    return render_template('tutorial.html', title='Tutorial')
 
 
 
