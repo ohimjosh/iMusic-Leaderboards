@@ -9,6 +9,11 @@ followers = db.Table('followers',
                     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
                    )
 
+listeners = db.Table('listeners',
+                     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+                     db.Column('song_id', db.Integer, db.ForeignKey('song.id'))
+                    )
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -17,6 +22,26 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    songs_followed = db.relationship('Song', secondary=listeners,
+                                   backref=db.backref('listeners',lazy='dynamic'),
+                                   lazy='dynamic')
+
+
+
+
+    def song_follow(self, song):
+        if not self.is_following_song(song):
+            self.songs_followed.append(song)
+
+    def song_unfollow(self, song):
+        if self.is_following_song(song):
+            self.songs_followed.remove(song)
+
+    def is_following_song(self, song):
+        return self.songs_followed.filter(listeners.c.song_id == song.id).count()>0
+
+
+
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -86,8 +111,8 @@ class Song(db.Model):
 
 
     def __repr__(self):
-        return '<Song: ID {}, track {}, artist {}, genre {}, bpm {}>'.format(self.id, self.track_name, self.artist_name, self.genre,
-                self.beats_per_minute)
+        return '<Song: ID {}, track {}, artist {}, genre {}, bpm {}, Listeners : {}>'.format(self.id, self.track_name, self.artist_name, self.genre,
+                self.beats_per_minute, self.listeners.all())
 
 
 

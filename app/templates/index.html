@@ -18,6 +18,7 @@
     <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
     {% endfor %}
     <p>Terminate Account? <a href="{{ url_for('terminate') }}">Click to Terminate!</a></p>
+    <p><a href="{{url_for('leaderboard') }}">Leaderboard</a></p>
 </body>
 </html>
 {% endblock %}
