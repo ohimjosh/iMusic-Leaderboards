@@ -6,6 +6,15 @@
     <p> {{ song.track_name }} </p>
     <p> {{ song.valence }} </p>
 
+    {% if not current_user.is_anonymous %}
+        {% if current_user.is_following_song(song) %}
+        <a href="{{url_for('song_follow', songID=song.id, action='unfollow')}}">Unfollow</a>
+        {% else %}
+        <a href="{{url_for('song_follow', songID=song.id, action='follow')}}">Follow</a>
+        {% endif %}
+    {% endif %}
+
+
 </body>
 </html>
 {% endblock %}

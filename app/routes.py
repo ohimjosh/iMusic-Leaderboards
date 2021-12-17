@@ -204,5 +204,31 @@ def song_page(songID):
     return render_template('song_page.html', song=song)
 
 
+@app.route('/leaderboard/<int:songID>/<action>')
+@login_required
+def song_follow(songID, action):
+    song = Song.query.filter_by(id=songID).first_or_404()
+    if action == "follow":
+        current_user.song_follow(song)
+        flash('You are following {}'.format(song.track_name))
+        db.session.commit()
+    elif action == "unfollow":
+        current_user.song_unfollow(song)
+        flash('You unfollowed {}'.format(song.track_name))
+        db.session.commit()
+    return redirect(request.referrer)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
