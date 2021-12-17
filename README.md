@@ -1,6 +1,6 @@
 # 336 Project 2
 
-# Temporary Notes : 
+# Overview 
 Data set: https://www.kaggle.com/leonardopena/top50spotify2019
 - Will be using SQLite and SQLAlchemy
 - Users should be able to create an account and add books to their shelfs.
@@ -8,18 +8,7 @@ Data set: https://www.kaggle.com/leonardopena/top50spotify2019
 - Must be able to Update their information
 - Must be able to rate their books (1 - 5 stars) 
 
-# Todo:
-- Login, Registration, Connect to DB
-
-
-
-
-
-
-
-
-
-
+# Specification/Requirement
 
 **Objective: The purpose of this project is to implement databases into a Full stack application.**
 
