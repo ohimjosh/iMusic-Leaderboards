@@ -205,7 +205,6 @@ def song_follow(songID, action):
     return redirect(request.referrer)
 
 @app.route("/tutorial")
-@login_required
 def tutorial():
     return render_template('tutorial.html', title='Tutorial')
 
