@@ -1,4 +1,4 @@
-# 336 Project 2
+# iMusic Leaderboards
 
 # Overview 
 Data set: https://www.kaggle.com/leonardopena/top50spotify2019
